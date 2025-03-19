@@ -1,0 +1,103 @@
+/* Điều chỉnh hành vi cuộn mượt, nhưng tắt nếu người dùng bật "Giảm chuyển động" */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Thiết lập chung */
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+/* Tiêu đề */
+h1 {
+    text-align: center;
+    font-size: 1.95em;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Khoảng cách giữa các danh sách */
+li {
+    margin-top: 20px;
+}
+
+/* Hình ảnh */
+img {
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+}
+
+/* Nhãn */
+.label {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Grid Layout cho ảnh */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+/* Tablet (≥772px): Grid 2 cột, ảnh bo tròn */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    img {
+        border-radius: 50%;
+    }
+
+    /* Ảnh cuối chiếm cả 2 cột */
+    .grid figure:last-child {
+        grid-column: span 2;
+    }
+}
+
+/* Large Screen (≥992px): Mỗi ảnh thứ 3 chiếm 2 cột, bỏ border-radius */
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    img {
+        border-radius: 0;
+    }
+
+    .grid figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+}
+
+/* Chế độ tối */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #ffcc00;
+    }
+
+    .grid figure {
+        background-color: #333;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    img {
+        border: 5px solid black;
+    }
+}
